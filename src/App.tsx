@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import NavbarWithLayout from './common/NavbarWithLayout';
+import DemosManager from './demos/DemosManager';
+import Home from './Home';
+import LabsManager from './labs/LabsManager';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main className="container">
+      <header className="row">
+        <div className="col">
+          <h1>Front-end Bootcamp</h1>
+          <hr />
+        </div>
       </header>
-    </div>
+      <Routes>
+        <Route path="/" element={<NavbarWithLayout />}>
+          <Route index element={<Home />} />
+          <Route path="demos" element={<DemosManager />} />
+          <Route path="labs" element={<LabsManager />} />
+        </Route>
+      </Routes>
+    </main>
   );
 }
 
