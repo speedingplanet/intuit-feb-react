@@ -1,6 +1,7 @@
 import React, { MouseEvent } from 'react';
 
 export default function EventHandling() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let styles = {
     cursor: 'pointer',
     backgroundColor: 'blue',
