@@ -22,7 +22,7 @@ module.exports = {
       { functions: 'never', arrays: 'always-multiline', objects: 'always-multiline' },
     ],
     indent: [ 'error', 2, { MemberExpression: 1 } ],
-    'max-len': [ 'error', { code: 100, comments: 120 } ],
+    'max-len': [ 'warn', { code: 100, comments: 120 } ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
     'prefer-const': 'off',
