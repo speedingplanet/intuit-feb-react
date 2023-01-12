@@ -1,0 +1,8 @@
+.grid-header-row {
+  display: flex;
+}
+
+.grid-header {
+  flex-grow: 1;
+  font-weight: bold;
+}
