@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ComponentCommunication() {
   return (
@@ -10,23 +10,34 @@ export default function ComponentCommunication() {
 }
 
 function Parent() {
+  let [message, setMessage] = useState('The button was NOT clicked');
+
+  let handleSiblingOneClick = () => {
+    setMessage('The button was actually clicked');
+  };
+
   return (
     <section style={{ border: '2px dotted red', padding: '10px' }}>
       <div className="row">
         <div className="col">
-          <SiblingOne />
+          <SiblingOne tellMeAboutTheClick={handleSiblingOneClick} />
         </div>
         <div className="col">
-          <SiblingTwo message="The button was NOT clicked" />
+          <SiblingTwo message={message} />
         </div>
       </div>
     </section>
   );
 }
 
-function SiblingOne() {
+interface SiblingOneProps {
+  tellMeAboutTheClick: () => void;
+}
+
+function SiblingOne({ tellMeAboutTheClick }: SiblingOneProps) {
   let handleClick = () => {
     console.log('You clicked on the button!');
+    tellMeAboutTheClick();
   };
 
   return (
