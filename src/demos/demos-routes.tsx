@@ -1,5 +1,5 @@
 import { RouteObject } from 'react-router-dom';
-import DemoOne from './DemoOne';
+import ComponentCommunication from './ComponentCommunication';
 import DemoTwo from './DemoTwo';
 
 let routes = new Map<RouteObject, string>();
@@ -14,10 +14,10 @@ routes.set(
 
 routes.set(
   {
-    path: 'demo-one',
-    element: <DemoOne />,
+    path: 'component-communication',
+    element: <ComponentCommunication />,
   },
-  'Demo One'
+  'Component Communication'
 );
 
 routes.set(
