@@ -1,4 +1,4 @@
-import { NonIndexRouteObject, RouteObject } from 'react-router-dom';
+import { IndexRouteObject, NonIndexRouteObject } from 'react-router-dom';
 import DemoOne from './DemoOne';
 import DemoTwo from './DemoTwo';
 
@@ -7,13 +7,18 @@ interface NonIndexRouteObjectWithLabels extends NonIndexRouteObject {
   children?: NonIndexRouteObjectWithLabels[];
 }
 
-// type RouteObjectWithLabels = RouteObject | NonIndexRouteObjectWithLabels;
+interface IndexRouteObjectWithLabels extends IndexRouteObject {
+  label?: string;
+}
+
+type RouteObjectWithLabels = IndexRouteObjectWithLabels | NonIndexRouteObjectWithLabels;
 
 // let routes: NonIndexRouteObjectWithLabels[] = [
-let routes: NonIndexRouteObjectWithLabels[] = [
+let routes: RouteObjectWithLabels[] = [
   {
     path: '/',
     element: <p>Placeholder</p>,
+    index: true,
   },
   {
     path: 'demo-one',
