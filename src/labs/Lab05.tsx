@@ -5,7 +5,7 @@ export default function Lab05() {
   let columns = ['First Name', 'Last Name', 'City', 'State'];
   return (
     <section>
-      <h3>Lab 4: Component communication</h3>
+      <h3>Lab 5: Iterative content</h3>
       <GridHeaderRow columnNames={columns} />
     </section>
   );
@@ -19,7 +19,6 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
   let [sortConfig, setSortConfig] = useState({ sortColumn: '', sortDirection: '' });
 
   let handleSortColumn = (sortColumn: string) => {
-    console.log(`From the parent, sort on ${sortColumn}`);
     let nextSortDirection = '';
 
     if (sortColumn === sortConfig.sortColumn && sortConfig.sortDirection === 'ascending') {
