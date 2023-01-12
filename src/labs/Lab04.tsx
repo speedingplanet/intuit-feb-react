@@ -41,8 +41,8 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
     }
     return (
       <GridHeader
-        columnName={columnName}
         key={columnName}
+        columnName={columnName}
         sortColumn={handleSortColumn}
         sortIndicator={sortIndicator}
       />
