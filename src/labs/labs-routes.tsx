@@ -2,6 +2,7 @@ import { RouteObject } from 'react-router-dom';
 import Lab01 from './Lab01';
 import Lab02 from './Lab02';
 import Lab03 from './Lab03';
+import Lab04 from './Lab04';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -35,6 +36,14 @@ routes.set(
     element: <Lab03 />,
   },
   'Lab 03'
+);
+
+routes.set(
+  {
+    path: 'lab-04',
+    element: <Lab04 />,
+  },
+  'Lab 04'
 );
 
 export { routes };

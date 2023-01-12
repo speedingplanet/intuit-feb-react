@@ -5,7 +5,7 @@ export default function Lab03() {
   let columns = ['First Name', 'Last Name', 'City', 'State'];
   return (
     <section>
-      <h3>Lab 3: using State</h3>
+      <h3>Lab 4: Component communication</h3>
       <GridHeaderRow columnNames={columns} />
     </section>
   );
