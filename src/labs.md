@@ -31,3 +31,15 @@ Use something as a sort indicator, and have it change when the sort direction ch
 ...and then clicks toggle from that point.
 
 Suggested sort indicators: You could use "V" for descending and "^" for ascending. Or you could go with emojis: 🔼 / 🔽, ⏫ / ⏬, ⬆️ / ⬇️. Or you could find some images!
+
+## Lab 5: Iterative content
+
+Using the information in src/data/people.ts, iterate over the content in the people array to generate a row for each person. Use this in the context of the Grid component we've been working with.
+
+Work in src/labs/Lab05.tsx. Working on a git branch will be easier for managing updates.
+
+Feel free to start with a big component (maybe GridBody?) that has all the row and cell generating code. After you get it to work, consider refactoring into smaller components (GridBody contains GridRows which contain GridCells?) as needed.
+
+## Lab 6: Implementing sort
+
+The moment we've been waiting for! Implementing a sort. We will talk about the challenges of sorting content, and then try to implement it in our Grid.
