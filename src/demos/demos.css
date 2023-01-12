@@ -1,0 +1,20 @@
+.movie-container {
+  border: 2px black solid;
+}
+
+.movie-headers {
+  border-bottom: 4px black solid;
+}
+
+.movie-headers,
+.movie-row {
+  display: flex;
+}
+
+.movie-headers > div {
+  flex: 1;
+}
+
+.movie-row > div {
+  flex: 1;
+}

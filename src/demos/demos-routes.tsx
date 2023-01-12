@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import ComponentCommunication from './ComponentCommunication';
-import DemoTwo from './DemoTwo';
+import MovieTable from './MovieTable';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -22,10 +22,10 @@ routes.set(
 
 routes.set(
   {
-    path: 'demo-two',
-    element: <DemoTwo />,
+    path: 'iterative-data',
+    element: <MovieTable />,
   },
-  'Demo Two'
+  'Iterative Data'
 );
 
 export { routes };
