@@ -1,35 +1,31 @@
-import { IndexRouteObject, NonIndexRouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 import DemoOne from './DemoOne';
 import DemoTwo from './DemoTwo';
 
-interface NonIndexRouteObjectWithLabels extends NonIndexRouteObject {
-  label?: string;
-  children?: NonIndexRouteObjectWithLabels[];
-}
-
-interface IndexRouteObjectWithLabels extends IndexRouteObject {
-  label?: string;
-}
-
-type RouteObjectWithLabels = IndexRouteObjectWithLabels | NonIndexRouteObjectWithLabels;
-
-// let routes: NonIndexRouteObjectWithLabels[] = [
-let routes: RouteObjectWithLabels[] = [
+let routes = new Map<RouteObject, string>();
+routes.set(
   {
     path: '/',
     element: <p>Placeholder</p>,
     index: true,
   },
+  'index'
+);
+
+routes.set(
   {
     path: 'demo-one',
     element: <DemoOne />,
-    label: 'Demo One',
   },
+  'Demo One'
+);
+
+routes.set(
   {
     path: 'demo-two',
     element: <DemoTwo />,
-    label: 'Demo Two',
   },
-];
+  'Demo Two'
+);
 
 export { routes };

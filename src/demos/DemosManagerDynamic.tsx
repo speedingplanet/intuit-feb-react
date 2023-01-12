@@ -4,8 +4,8 @@ import Header from '../common/Header';
 import { routes } from './demos-routes';
 
 export default function DemosManagerDynamic() {
-  let element = useRoutes(routes);
-  console.log('useRoutes: ', element);
+  let routeConfig = Array.from(routes.keys());
+  let element = useRoutes(routeConfig);
 
   return (
     <>
@@ -13,11 +13,11 @@ export default function DemosManagerDynamic() {
       <div className="row">
         <div className="col-3">
           <ul>
-            {routes
+            {routeConfig
               .filter((r) => !r.index)
               .map((r, index) => (
                 <li key={index}>
-                  <Link to={`${r.path}`}>{r.label}</Link>
+                  <Link to={`${r.path}`}>{routes.get(r)}</Link>
                 </li>
               ))}
           </ul>
