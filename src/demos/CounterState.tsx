@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function CounterState() {
   let [counter, setCounter] = useState(0);
+  // let counter = 0;
 
   return (
     <div className="row">
@@ -17,12 +18,17 @@ export default function CounterState() {
               <button
                 className="btn btn-primary"
                 onClick={() => {
-                  console.log('Adding to the counter');
                   setCounter(counter + 1);
                 }}>
                 Add
               </button>
-              <button className="btn btn-primary">Subtract</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  setCounter(counter - 1);
+                }}>
+                Subtract
+              </button>
             </div>
           </div>
         </div>
