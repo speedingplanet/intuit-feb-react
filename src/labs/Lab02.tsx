@@ -1,11 +1,11 @@
 import React from 'react';
 import './data-grid.css';
 
-export default function Lab01() {
+export default function Lab02() {
   let columns = ['First Name', 'Last Name', 'City', 'State'];
   return (
     <section>
-      <h3>Lab 1</h3>
+      <h3>Lab 2: Event Handling</h3>
       <GridHeaderRow columnNames={columns} />
     </section>
   );
@@ -28,5 +28,13 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
 }
 
 function GridHeader({ columnName }: GridHeaderProps) {
-  return <div className="grid-header">{columnName}</div>;
+  let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    console.log(`You clicked on the ${event.currentTarget.textContent} column.`);
+  };
+
+  return (
+    <div className="grid-header clickable" onClick={handleColumnClick}>
+      {columnName}
+    </div>
+  );
 }
