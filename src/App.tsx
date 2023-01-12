@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavbarWithLayout from './common/NavbarWithLayout';
-import DemosManager from './demos/DemosManager';
+import DemosManagerComponents from './demos/DemosManagerComponents';
 import DemosManagerDynamic from './demos/DemosManagerDynamic';
 import Home from './Home';
 import LabsManager from './labs/LabsManager';
@@ -18,8 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<NavbarWithLayout />}>
           <Route index element={<Home />} />
-          <Route path="demos/*" element={<DemosManager />} />
-          <Route path="demos-dynamic/*" element={<DemosManagerDynamic />} />
+          <Route path="demos-components/*" element={<DemosManagerComponents />} />
+          <Route path="demos/*" element={<DemosManagerDynamic />} />
           <Route path="labs/*" element={<LabsManager />} />
         </Route>
       </Routes>

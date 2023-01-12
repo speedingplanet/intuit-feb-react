@@ -15,12 +15,12 @@ export default function NavbarWithLayout() {
               </li>
               <li className="nav-item">
                 <NavLink to="/demos" className="nav-link">
-                  Demos
+                  Demos (dynamic)
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/demos-dynamic" className="nav-link">
-                  Demos (Dynamic)
+                <NavLink to="/demos-components" className="nav-link">
+                  Demos (using components)
                 </NavLink>
               </li>
               <li className="nav-item">
