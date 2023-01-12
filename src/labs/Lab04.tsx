@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './data-grid.css';
 
-export default function Lab03() {
+export default function Lab04() {
   let columns = ['First Name', 'Last Name', 'City', 'State'];
   return (
     <section>
@@ -16,12 +16,37 @@ interface GridHeaderRowProps {
 }
 
 function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
+  let [sortConfig, setSortConfig] = useState({ sortColumn: '', sortDirection: '' });
+
   let handleSortColumn = (sortColumn: string) => {
     console.log(`From the parent, sort on ${sortColumn}`);
+    let nextSortDirection = '';
+
+    if (sortColumn === sortConfig.sortColumn && sortConfig.sortDirection === 'ascending') {
+      nextSortDirection = 'descending';
+    } else {
+      nextSortDirection = 'ascending';
+    }
+
+    setSortConfig({
+      sortDirection: nextSortDirection,
+      sortColumn: sortColumn,
+    });
   };
 
   let headers = columnNames.map((columnName) => {
-    return <GridHeader columnName={columnName} key={columnName} sortColumn={handleSortColumn} />;
+    let sortIndicator = '';
+    if (columnName === sortConfig.sortColumn) {
+      sortIndicator = sortConfig.sortDirection === 'ascending' ? '🔼' : '🔽';
+    }
+    return (
+      <GridHeader
+        columnName={columnName}
+        key={columnName}
+        sortColumn={handleSortColumn}
+        sortIndicator={sortIndicator}
+      />
+    );
   });
 
   return <div className="grid-header-row">{headers}</div>;
@@ -30,33 +55,18 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
 interface GridHeaderProps {
   columnName: string;
   sortColumn: (columnName: string) => void;
+  sortIndicator?: string;
 }
 
-function GridHeader({ columnName, sortColumn }: GridHeaderProps) {
-  // let [stateVariable, setterFunction] = useState(initialValue)
-  let [sortDirection, setSortDirection] = useState('');
-  let sortArrow;
-
-  if (sortDirection === 'ascending') {
-    sortArrow = '🔼';
-  } else if (sortDirection === 'descending') {
-    sortArrow = '🔽';
-  }
-
+function GridHeader({ columnName, sortColumn, sortIndicator }: GridHeaderProps) {
   let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log(`You clicked on the ${event.currentTarget.textContent} column.`);
-    sortColumn(event.currentTarget.textContent || '');
-
-    if (sortDirection === '' || sortDirection === 'descending') {
-      setSortDirection('ascending');
-    } else {
-      setSortDirection('descending');
-    }
+    sortColumn(columnName);
   };
 
   return (
     <div className="grid-header clickable" onClick={handleColumnClick}>
-      {columnName} {sortArrow}
+      {columnName}
+      {sortIndicator}
     </div>
   );
 }
