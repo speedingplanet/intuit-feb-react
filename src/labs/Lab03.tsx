@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './data-grid.css';
 
 export default function Lab03() {
@@ -28,13 +28,28 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
 }
 
 function GridHeader({ columnName }: GridHeaderProps) {
+  // let [stateVariable, setterFunction] = useState(initialValue)
+  let [sortDirection, setSortDirection] = useState('');
+  let sortArrow;
+
+  if (sortDirection === 'ascending') {
+    sortArrow = '🔼';
+  } else if (sortDirection === 'descending') {
+    sortArrow = '🔽';
+  }
+
   let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(`You clicked on the ${event.currentTarget.textContent} column.`);
+    if (sortDirection === '' || sortDirection === 'descending') {
+      setSortDirection('ascending');
+    } else {
+      setSortDirection('descending');
+    }
   };
 
   return (
     <div className="grid-header clickable" onClick={handleColumnClick}>
-      {columnName}
+      {columnName} {sortArrow}
     </div>
   );
 }
