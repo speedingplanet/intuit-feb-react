@@ -5,7 +5,7 @@ export default function Lab03() {
   let columns = ['First Name', 'Last Name', 'City', 'State'];
   return (
     <section>
-      <h3>Lab 3: using State</h3>
+      <h3>Lab 4: Component communication</h3>
       <GridHeaderRow columnNames={columns} />
     </section>
   );
@@ -50,30 +50,6 @@ function GridHeader({ columnName }: GridHeaderProps) {
   return (
     <div className="grid-header clickable" onClick={handleColumnClick}>
       {columnName} {sortArrow}
-    </div>
-  );
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function GridHeaderSortState({ columnName }: GridHeaderProps) {
-  let [sortConfig, setSortConfig] = useState({ direction: '', indicator: '' });
-
-  let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    console.log(`You clicked on the ${event.currentTarget.textContent} column.`);
-    if (sortConfig.direction === '' || sortConfig.direction === 'descending') {
-      // Set sortConfig.direction to 'ascending'
-      // Set indicator to 🔼
-      setSortConfig({ direction: 'ascending', indicator: '🔼' });
-    } else {
-      // Set sortConfig.direction to 'descending'
-      // Set indicator to 🔼
-      setSortConfig({ direction: 'descending', indicator: '🔽' });
-    }
-  };
-
-  return (
-    <div className="grid-header clickable" onClick={handleColumnClick}>
-      {columnName} {sortConfig.indicator}
     </div>
   );
 }
