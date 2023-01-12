@@ -15,19 +15,24 @@ interface GridHeaderRowProps {
   columnNames: string[];
 }
 
-interface GridHeaderProps {
-  columnName: string;
-}
-
 function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
+  let handleSortColumn = (sortColumn: string) => {
+    console.log(`From the parent, sort on ${sortColumn}`);
+  };
+
   let headers = columnNames.map((columnName) => {
-    return <GridHeader columnName={columnName} key={columnName} />;
+    return <GridHeader columnName={columnName} key={columnName} sortColumn={handleSortColumn} />;
   });
 
   return <div className="grid-header-row">{headers}</div>;
 }
 
-function GridHeader({ columnName }: GridHeaderProps) {
+interface GridHeaderProps {
+  columnName: string;
+  sortColumn: (columnName: string) => void;
+}
+
+function GridHeader({ columnName, sortColumn }: GridHeaderProps) {
   // let [stateVariable, setterFunction] = useState(initialValue)
   let [sortDirection, setSortDirection] = useState('');
   let sortArrow;
@@ -40,6 +45,8 @@ function GridHeader({ columnName }: GridHeaderProps) {
 
   let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
     console.log(`You clicked on the ${event.currentTarget.textContent} column.`);
+    sortColumn(event.currentTarget.textContent || '');
+
     if (sortDirection === '' || sortDirection === 'descending') {
       setSortDirection('ascending');
     } else {
