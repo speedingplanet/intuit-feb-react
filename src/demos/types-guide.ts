@@ -173,8 +173,37 @@ type ExtensibleWhatever = {
 
 // Utilities
 // keyof
+type KCar = {
+  make: string;
+  model: string;
+  year: number;
+  color: string;
+};
+
+type KCarProps = keyof KCar; // 'make' | 'model' | 'year' | 'color'
+
 // typeof
+let myHonda = {
+  make: 'Honda',
+  model: 'Civic',
+};
+
+type HondaType = typeof myHonda;
+let myFord: HondaType = {
+  make: 'Ford',
+  model: 'Mustang',
+};
+/*
+type HondaType = {
+  make: string;
+  model: string;
+}
+*/
+
 // Pick / Omit
+type MakeModel = Pick<KCar, 'make' | 'model'>;
+
+type ForgetTheColor = Omit<KCar, 'color'>;
 
 // Partial / Required
 
@@ -183,6 +212,30 @@ type OptionalShippableBook = Book & Partial<Shippable>;
 
 // Readonly
 
+type ReadOnlyCar = Readonly<KCar>;
+
 // Generics
+
+interface LockedTypeStack {
+  push: (val: string) => void;
+  pop: () => string;
+  values: string[];
+}
+
+interface GenericStack<T> {
+  push: (val: T) => void;
+  pop: () => T | undefined;
+  values: T[];
+}
+
+let numberStack: GenericStack<number> = {
+  values: [],
+  push: function (x) {
+    this.values.push(x);
+  },
+  pop: function () {
+    return this.values.pop();
+  },
+};
 
 export {};
