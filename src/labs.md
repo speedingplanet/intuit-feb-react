@@ -47,8 +47,8 @@ Set up the following types, if you haven't already
 - Person
 - PersonFields: The keys of person
 - SortDirection: 'asc' | 'desc' | undefined
-- SelectSortHandlerFn (sortColumn: PersonFields) => void
 - SortConfig (PersonFields | undefined, SortDirection)
+- SelectSortHandlerFn (sortColumn: PersonFields) => void
 - GridColumnConfig for a field and a label
 
 Using these types implies some changes in your code:
