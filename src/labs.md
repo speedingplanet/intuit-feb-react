@@ -61,19 +61,19 @@ Using these types implies some changes in your code:
 
 ## Lab 7: Sorting
 
-    * Create a GridContainer
-    	* Takes columnConfig[] and people[] as props
-    	* move the state handling code into it
-    	* move the event handler into it (part of the above)
-    	* Pass the eventHandler, columnConfig, sortConfig to GridHeaderRow
-    	* Pass the people, columnConfig to GridBody
-    * GridHeaderRow
-    	* Update to generate off of GridConfig
-    	* Pass column, eventHandler, sortIndicator to GridHeader
-    * GridHeader
-    	* Update the event handler to call the passed event handler
-    	* Update content to use column.label
-    * GridBody
-    	* props are people and columns
-    	* iterate over people to generate rows, key is person.id
-    	* iterate over columns to generate cells, key is column.field.
+- Create a GridContainer
+  - Takes columnConfig[] and people[] as props
+  - move the state handling code into it
+  - move the event handler into it (part of the above)
+  - Pass the eventHandler, columnConfig, sortConfig to GridHeaderRow
+  - Pass the people, columnConfig to GridBody
+- GridHeaderRow
+  - Update to generate off of GridConfig
+  - Pass column, eventHandler, sortIndicator to GridHeader
+- GridHeader
+  - Update the event handler to call the passed event handler
+  - Update content to use column.label
+- GridBody
+  - props are people and columns
+  - iterate over people to generate rows, key is person.id
+  - iterate over columns to generate cells, key is column.field.

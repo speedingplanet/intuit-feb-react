@@ -5,6 +5,7 @@ import Lab03 from './Lab03';
 import Lab04 from './Lab04';
 import Lab05 from './Lab05';
 import Lab06 from './Lab06';
+import Lab07 from './Lab07';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -62,6 +63,14 @@ routes.set(
     element: <Lab06 />,
   },
   'Lab 06'
+);
+
+routes.set(
+  {
+    path: 'lab-07',
+    element: <Lab07 />,
+  },
+  'Lab 07'
 );
 
 export { routes };
