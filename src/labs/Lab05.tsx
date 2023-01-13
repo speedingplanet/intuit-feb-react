@@ -28,18 +28,20 @@ interface Person {
   id: number;
 }
 
+type PersonFields = keyof Person; // 'firstName' | 'lastName' | etc...
+
 interface GridBodyProps {
   people: Person[];
 }
-
-type PersonFields = keyof Person;
 
 function GridBody({ people }: GridBodyProps) {
   let fields: PersonFields[] = ['firstName', 'lastName', 'city', 'province'];
   return (
     <div className="grid-body">
+      {/* Looping over each person */}
       {people.map((person) => (
         <div className="grid grid-body-row" key={person.id}>
+          {/* For this person, print out the values of the fields in the `fields` array */}
           {fields.map((field) => (
             <div className="grid-body-cell" key={field}>
               {person[field]}
