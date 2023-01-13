@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import ComponentCommunication from './ComponentCommunication';
+import CounterState from './CounterState';
 import MovieTable from './MovieTable';
 
 let routes = new Map<RouteObject, string>();
@@ -26,6 +27,14 @@ routes.set(
     element: <MovieTable />,
   },
   'Iterative Data'
+);
+
+routes.set(
+  {
+    path: 'state-counter',
+    element: <CounterState />,
+  },
+  'State-based counter'
 );
 
 export { routes };
