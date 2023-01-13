@@ -43,12 +43,13 @@ Feel free to start with a big component (maybe GridBody?) that has all the row a
 ## Lab 6: Implementing proper typing
 
 Set up the following types, if you haven't already
-_ Person
-_ PersonFields: The keys of person
-_ SortDirection: 'asc' | 'desc' | undefined
-_ SelectSortHandlerFn (sortColumn: PersonFields) => void
-_ SortConfig (PersonFields | undefined, SortDirection)
-_ GridColumnConfig for a field and a label
+
+- Person
+- PersonFields: The keys of person
+- SortDirection: 'asc' | 'desc' | undefined
+- SelectSortHandlerFn (sortColumn: PersonFields) => void
+- SortConfig (PersonFields | undefined, SortDirection)
+- GridColumnConfig for a field and a label
 
 Using these types implies some changes in your code:
 
