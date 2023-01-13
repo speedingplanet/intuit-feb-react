@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './data-grid.css';
 import { people } from '../data/people';
 
-export default function Lab06() {
+export default function Lab07() {
   // let columns = ['First Name', 'Last Name', 'City', 'State'];
   let columns: GridColumnConfig[] = [
     { field: 'firstName', label: 'First Name' },

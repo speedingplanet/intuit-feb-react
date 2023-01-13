@@ -62,18 +62,21 @@ Using these types implies some changes in your code:
 ## Lab 7: Sorting
 
 - Create a GridContainer
-  - Takes columnConfig[] and people[] as props
-  - move the state handling code into it
-  - move the event handler into it (part of the above)
-  - Pass the eventHandler, columnConfig, sortConfig to GridHeaderRow
-  - Pass the people, columnConfig to GridBody
-- GridHeaderRow
-  - Update to generate off of GridConfig
-  - Pass column, eventHandler, sortIndicator to GridHeader
+  - Takes GridColumnConfig[] and Person[] as props
+  - move the state handling code from GridHeaderRow into it
+  - move the event handler from GridHeaderRow into it (part of the above)
+  - Pass the eventHandler, GridColumnConfig, SortConfig (from the state) to GridHeaderRow
+  - Pass the people, GridColumnConfig to GridBody
 - GridHeader
   - Update the event handler to call the passed event handler
-  - Update content to use column.label
 - GridBody
-  - props are people and columns
+  - props are Person[] and GridColumnConfig[]
   - iterate over people to generate rows, key is person.id
   - iterate over columns to generate cells, key is column.field.
+- Everything above this is setup/foundation stuff
+- Go back to GridContainer
+  - Import the 'orderBy' function from the 'lodash' library (already installed)
+    - let sortedArray = orderBy(array, sortField, sortDirection)
+  - In the event handler for handling the selected sort field, update the SortConfig
+  - OUTSIDE the event handler, but BEFORE the return statement, use orderBy to sort the people array with the information in SortConfig.
+  - Pass the sorted array into GridBody to re-render
