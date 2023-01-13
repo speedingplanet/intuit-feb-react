@@ -37,9 +37,9 @@ type PersonFields = keyof Person;
 function GridBody({ people }: GridBodyProps) {
   let fields: PersonFields[] = ['firstName', 'lastName', 'city', 'province'];
   return (
-    <div className="grid grid-body">
+    <div className="grid-body">
       {people.map((person) => (
-        <div className="grid-body-row" key={person.id}>
+        <div className="grid grid-body-row" key={person.id}>
           {fields.map((field) => (
             <div className="grid-body-cell" key={field}>
               {person[field]}
@@ -58,7 +58,7 @@ interface GridHeaderRowProps {
 function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
   let [sortConfig, setSortConfig] = useState({ sortColumn: '', sortDirection: '' });
 
-  let handleSortColumn = (sortColumn: string) => {
+  let handleSortField = (sortColumn: string) => {
     let nextSortDirection = '';
 
     if (sortColumn === sortConfig.sortColumn && sortConfig.sortDirection === 'ascending') {
@@ -82,7 +82,7 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
       <GridHeader
         key={columnName}
         columnName={columnName}
-        sortColumn={handleSortColumn}
+        selectSortField={handleSortField}
         sortIndicator={sortIndicator}
       />
     );
@@ -93,13 +93,13 @@ function GridHeaderRow({ columnNames }: GridHeaderRowProps) {
 
 interface GridHeaderProps {
   columnName: string;
-  sortColumn: (columnName: string) => void;
+  selectSortField: (columnName: string) => void;
   sortIndicator?: string;
 }
 
-function GridHeader({ columnName, sortColumn, sortIndicator }: GridHeaderProps) {
+function GridHeader({ columnName, selectSortField, sortIndicator }: GridHeaderProps) {
   let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    sortColumn(columnName);
+    selectSortField(columnName);
   };
 
   return (
