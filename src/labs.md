@@ -40,6 +40,39 @@ Work in src/labs/Lab05.tsx. Working on a git branch will be easier for managing 
 
 Feel free to start with a big component (maybe GridBody?) that has all the row and cell generating code. After you get it to work, consider refactoring into smaller components (GridBody contains GridRows which contain GridCells?) as needed.
 
-## Lab 6: Implementing sort
+## Lab 6: Implementing proper typing
 
-The moment we've been waiting for! Implementing a sort. We will talk about the challenges of sorting content, and then try to implement it in our Grid.
+Set up the following types, if you haven't already
+_ Person
+_ PersonFields: The keys of person
+_ SortDirection: 'asc' | 'desc' | undefined
+_ SelectSortHandlerFn (sortColumn: PersonFields) => void
+_ SortConfig (PersonFields | undefined, SortDirection)
+_ GridColumnConfig for a field and a label
+
+Using these types implies some changes in your code:
+
+- The event handler for GridHeader should use SelectSortHandlerFn
+- The useState code in GridHeaderRow should use SortConfig
+  - Also replace '' with undefined, which will make it easier to do sorting in the next lab
+- The big one, replace using column names as a string with using a GridColumnConfig, which has a field and a label
+  - Another thing that will make sorting easier
+
+## Lab 7: Sorting
+
+    * Create a GridContainer
+    	* Takes columnConfig[] and people[] as props
+    	* move the state handling code into it
+    	* move the event handler into it (part of the above)
+    	* Pass the eventHandler, columnConfig, sortConfig to GridHeaderRow
+    	* Pass the people, columnConfig to GridBody
+    * GridHeaderRow
+    	* Update to generate off of GridConfig
+    	* Pass column, eventHandler, sortIndicator to GridHeader
+    * GridHeader
+    	* Update the event handler to call the passed event handler
+    	* Update content to use column.label
+    * GridBody
+    	* props are people and columns
+    	* iterate over people to generate rows, key is person.id
+    	* iterate over columns to generate cells, key is column.field.
