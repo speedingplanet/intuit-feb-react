@@ -1,10 +1,25 @@
-.grid-header-row {
+.flex {
   display: flex;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template: 1fr / repeat(4, 1fr);
+}
+
 .grid-header {
-  flex-grow: 1;
   font-weight: bold;
+  padding-left: 1em;
+  border-bottom: 2px black double;
+}
+
+.grid-body-cell {
+  padding-left: 1em;
+  border-right: 2px black solid;
 }
 
 .clickable {
