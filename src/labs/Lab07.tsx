@@ -13,10 +13,7 @@ export default function Lab07() {
   return (
     <section>
       <h3>Lab 7: Sorting (finally)!</h3>
-      <div className="grid-container">
-        <GridHeaderRow columns={columns} />
-        <GridBody people={people} />
-      </div>
+      <GridContainer columns={columns} people={people} />
     </section>
   );
 }
@@ -49,34 +46,12 @@ type GridColumnConfig = {
   label: string;
 };
 
-interface GridBodyProps {
+interface GridContainerProps {
+  columns: GridColumnConfig[];
   people: Person[];
 }
 
-function GridBody({ people }: GridBodyProps) {
-  let fields: PersonFields[] = ['firstName', 'lastName', 'city', 'province'];
-  return (
-    <div className="grid-body">
-      {/* Looping over each person */}
-      {people.map((person) => (
-        <div className="grid grid-body-row" key={person.id}>
-          {/* For this person, print out the values of the fields in the `fields` array */}
-          {fields.map((field) => (
-            <div className="grid-body-cell" key={field}>
-              {person[field]}
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-interface GridHeaderRowProps {
-  columns: GridColumnConfig[];
-}
-
-function GridHeaderRow({ columns }: GridHeaderRowProps) {
+function GridContainer({ columns, people }: GridContainerProps) {
   let [sortConfig, setSortConfig] = useState<SortConfig>({
     sortColumn: undefined,
     sortDirection: undefined,
@@ -97,6 +72,44 @@ function GridHeaderRow({ columns }: GridHeaderRowProps) {
     });
   };
 
+  return (
+    <div className="grid-container">
+      <GridHeaderRow columns={columns} sortConfig={sortConfig} selectSortField={handleSortField} />
+      <GridBody people={people} columns={columns} />
+    </div>
+  );
+}
+
+interface GridBodyProps {
+  people: Person[];
+  columns: GridColumnConfig[];
+}
+
+function GridBody({ people, columns }: GridBodyProps) {
+  return (
+    <div className="grid-body">
+      {/* Looping over each person */}
+      {people.map((person) => (
+        <div className="grid grid-body-row" key={person.id}>
+          {/* For this person, print out the values of the fields in the `fields` array */}
+          {columns.map((column) => (
+            <div className="grid-body-cell" key={column.field}>
+              {person[column.field]}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+interface GridHeaderRowProps {
+  columns: GridColumnConfig[];
+  selectSortField: SelectSortHandlerFn;
+  sortConfig: SortConfig;
+}
+
+function GridHeaderRow({ columns, sortConfig, selectSortField }: GridHeaderRowProps) {
   let headers = columns.map((column) => {
     let sortIndicator = '';
     if (column.field === sortConfig.sortColumn) {
@@ -106,7 +119,7 @@ function GridHeaderRow({ columns }: GridHeaderRowProps) {
       <GridHeader
         key={column.field}
         column={column}
-        selectSortField={handleSortField}
+        selectSortField={selectSortField}
         sortIndicator={sortIndicator}
       />
     );
