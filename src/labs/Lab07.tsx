@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { orderBy } from 'lodash';
 import './data-grid.css';
 import { people } from '../data/people';
 
@@ -72,10 +73,12 @@ function GridContainer({ columns, people }: GridContainerProps) {
     });
   };
 
+  let sortedPeople = orderBy(people, sortConfig.sortColumn, sortConfig.sortDirection);
+
   return (
     <div className="grid-container">
       <GridHeaderRow columns={columns} sortConfig={sortConfig} selectSortField={handleSortField} />
-      <GridBody people={people} columns={columns} />
+      <GridBody people={sortedPeople} columns={columns} />
     </div>
   );
 }
