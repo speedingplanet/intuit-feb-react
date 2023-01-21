@@ -19,10 +19,6 @@ export default function MovieTable() {
       <div className="movie-headers">Year</div>
       <div className="movie-headers">Rating</div>
       <div className="movie-headers">Director</div>
-      <div className="movie-row">Spirited Away</div>
-      <div className="movie-row">2001</div>
-      <div className="movie-row">5</div>
-      <div className="movie-row">Hayao Miyazaki</div>
       {movies.map((movie) => (
         <MovieRow key={movie.id} movie={movie} />
       ))}

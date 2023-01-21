@@ -44,6 +44,15 @@ let movies = [
     rating: 5,
     genres: ['comic-book', 'sci-fi', 'action', 'adventure'],
   },
+  {
+    id: 6,
+    title: 'Spirited Away',
+    year: 2001,
+    director: 'Hayao Miyazaki',
+    writer: ['Hayao Miyazaki'],
+    rating: 5,
+    genres: ['anime', 'fantasy', 'family', 'mystery'],
+  },
 ];
 
 export { movies };
