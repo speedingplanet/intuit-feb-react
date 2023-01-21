@@ -1,20 +1,23 @@
 .movie-container {
-  border: 2px black solid;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: repeat(4, minmax(max-content, 1fr));
+  overflow-y: auto;
+
+  /* Uncomment this to see fixed headers in action */
+  /* height: 10vh; */
 }
 
 .movie-headers {
-  border-bottom: 4px black solid;
+  border-bottom: 1px lightgray solid;
+  position: sticky;
+  /* Need this to "stick" these to the top */
+  top: 0;
+  /* Without a brackground color, you can see "behind" the header row */
+  background-color: white;
 }
 
 .movie-headers,
 .movie-row {
-  display: flex;
-}
-
-.movie-headers > div {
-  flex: 1;
-}
-
-.movie-row > div {
-  flex: 1;
+  padding: 0 1em 0 0.2em;
 }

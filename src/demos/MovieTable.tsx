@@ -2,30 +2,6 @@ import React from 'react';
 import { movies } from '../data/movies';
 import './demos.css';
 
-export default function MovieTable() {
-  return (
-    <div className="movie-container">
-      <div className="movie-headers">
-        <div>Title</div>
-        <div>Year</div>
-        <div>Rating</div>
-        <div>Director</div>
-      </div>
-      <div className="movie-body">
-        <div className="movie-row">
-          <div>Spirited Away</div>
-          <div>2001</div>
-          <div>5</div>
-          <div>Hayao Miyazaki</div>
-        </div>
-        {movies.map((movie) => (
-          <MovieRow key={movie.id} movie={movie} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 interface Movie {
   title: string;
   year: number;
@@ -36,24 +12,35 @@ interface Movie {
   id: number;
 }
 
-interface MovieRowProps {
-  movie: Movie;
-}
-
-function MovieRow(props: MovieRowProps) {
+export default function MovieTable() {
   return (
-    <div className="movie-row">
-      <div>{props.movie.title}</div>
-      <div>{props.movie.year}</div>
-      <div>{props.movie.rating}</div>
-      <div>{props.movie.director}</div>
+    <div className="movie-container">
+      <div className="movie-headers">Title</div>
+      <div className="movie-headers">Year</div>
+      <div className="movie-headers">Rating</div>
+      <div className="movie-headers">Director</div>
+      <div className="movie-row">Spirited Away</div>
+      <div className="movie-row">2001</div>
+      <div className="movie-row">5</div>
+      <div className="movie-row">Hayao Miyazaki</div>
+      {movies.map((movie) => (
+        <MovieRow key={movie.id} movie={movie} />
+      ))}
     </div>
   );
 }
 
-/*
-  Create a MovieRow component
-  Iterate over the movies array
-  Generate a MovieRow component for each element of the array
+interface MovieRowProps {
+  movie: Movie;
+}
 
-*/
+function MovieRow({ movie }: MovieRowProps) {
+  return (
+    <>
+      <div className="movie-row">{movie.title}</div>
+      <div className="movie-row">{movie.year}</div>
+      <div className="movie-row">{movie.rating}</div>
+      <div className="movie-row">{movie.director}</div>
+    </>
+  );
+}
