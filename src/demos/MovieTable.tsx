@@ -30,7 +30,7 @@ interface MovieRowProps {
   movie: Movie;
 }
 
-function MovieRow({ movie }: MovieRowProps) {
+export function MovieRow({ movie }: MovieRowProps) {
   return (
     <>
       <div className="movie-row">{movie.title}</div>
