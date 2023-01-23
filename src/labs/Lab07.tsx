@@ -137,12 +137,14 @@ interface GridHeaderProps {
 }
 
 function GridHeader({ column, selectSortField, sortIndicator }: GridHeaderProps) {
+  /*
   let handleColumnClick = (event: React.MouseEvent<HTMLDivElement>) => {
     selectSortField(column.field);
   };
+  */
 
   return (
-    <div className="grid-header clickable" onClick={handleColumnClick}>
+    <div className="grid-header clickable" onClick={() => selectSortField(column.field)}>
       {column.label}
       {sortIndicator}
     </div>
