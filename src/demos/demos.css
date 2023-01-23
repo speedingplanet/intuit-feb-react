@@ -1,3 +1,16 @@
+.clickable {
+  cursor: pointer;
+  user-select: none; /* Might be frustrating since the text is unselectable */
+}
+
+.sort-asc::after {
+  content: ' 🔼';
+}
+
+.sort-desc::after {
+  content: ' 🔽';
+}
+
 .movie-container {
   display: grid;
   grid-template-rows: 1fr auto;

@@ -2,6 +2,7 @@ import { RouteObject } from 'react-router-dom';
 import ComponentCommunication from './ComponentCommunication';
 import CounterState from './CounterState';
 import MovieTable from './MovieTable';
+import SortableMovieTable from './SortableMovieTable';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -27,6 +28,14 @@ routes.set(
     element: <MovieTable />,
   },
   'Iterative Data'
+);
+
+routes.set(
+  {
+    path: 'sortable-data',
+    element: <SortableMovieTable />,
+  },
+  'Sortable Data'
 );
 
 routes.set(
