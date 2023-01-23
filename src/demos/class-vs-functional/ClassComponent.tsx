@@ -8,10 +8,10 @@ import React, { Component } from 'react';
  *
  */
 
-export default class ClassComponent extends Component<any, { counter: number }> {
+export default class ClassComponent extends Component<unknown, { counter: number }> {
   counter = 0;
 
-  constructor(props: any) {
+  constructor(props: unknown) {
     super(props);
     this.state = {
       counter: 0,
@@ -31,9 +31,9 @@ export default class ClassComponent extends Component<any, { counter: number }> 
 
   // useEffect(() => void)
   componentDidUpdate(
-    prevProps: Readonly<any>,
+    prevProps: Readonly<unknown>,
     prevState: Readonly<{ counter: number }>,
-    snapshot?: any
+    snapshot?: unknown
   ): void {
     console.log('componentDidUpdate: The component has updated for some reason.');
   }
