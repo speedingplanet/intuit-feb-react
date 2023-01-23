@@ -1,4 +1,5 @@
 import { RouteObject } from 'react-router-dom';
+import ClassVsFunctionalContainer from './class-vs-functional/ClassVsFunctionalContainer';
 import ComponentCommunication from './ComponentCommunication';
 import CounterState from './CounterState';
 import MovieTable from './MovieTable';
@@ -44,6 +45,14 @@ routes.set(
     element: <CounterState />,
   },
   'State-based counter'
+);
+
+routes.set(
+  {
+    path: 'class-vs-functional',
+    element: <ClassVsFunctionalContainer />,
+  },
+  'Class vs Functional components'
 );
 
 export { routes };
