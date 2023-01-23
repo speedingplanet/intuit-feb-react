@@ -4,7 +4,6 @@ import './data-grid.css';
 import { people } from '../data/people';
 
 export default function Lab07() {
-  // let columns = ['First Name', 'Last Name', 'City', 'State'];
   let columns: GridColumnConfig[] = [
     { field: 'firstName', label: 'First Name' },
     { field: 'lastName', label: 'Last Name' },
@@ -40,7 +39,7 @@ type SortConfig = {
   sortDirection: SortDirection;
 };
 
-type SelectSortHandlerFn = (sortColumn: PersonFields) => void;
+type SelectSortHandler = (sortColumn: PersonFields) => void;
 
 type GridColumnConfig = {
   field: PersonFields;
@@ -108,7 +107,7 @@ function GridBody({ people, columns }: GridBodyProps) {
 
 interface GridHeaderRowProps {
   columns: GridColumnConfig[];
-  selectSortField: SelectSortHandlerFn;
+  selectSortField: SelectSortHandler;
   sortConfig: SortConfig;
 }
 
@@ -133,7 +132,7 @@ function GridHeaderRow({ columns, sortConfig, selectSortField }: GridHeaderRowPr
 
 interface GridHeaderProps {
   column: GridColumnConfig;
-  selectSortField: SelectSortHandlerFn;
+  selectSortField: SelectSortHandler;
   sortIndicator?: string;
 }
 
