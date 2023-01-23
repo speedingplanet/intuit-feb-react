@@ -1,4 +1,4 @@
-import React, { useState, MouseEventHandler } from 'react';
+import React, { useState } from 'react';
 import { orderBy, startCase } from 'lodash';
 import { movies } from '../data/movies';
 import './demos.css';
