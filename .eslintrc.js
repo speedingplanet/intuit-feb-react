@@ -5,7 +5,12 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ['plugin:@typescript-eslint/recommended', 'react-app', 'react-app/jest'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'react-app',
+    'react-app/jest',
+    'plugin:jest-dom/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -13,7 +18,6 @@ module.exports = {
     requireConfigFile: false,
   },
   rules: {
-    // 'array-bracket-spacing': [ 'error', 'always' ],
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': [
       'error',
