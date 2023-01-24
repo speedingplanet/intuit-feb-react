@@ -3,7 +3,7 @@ import { orderBy, startCase } from 'lodash';
 import { movies } from '../data/movies';
 import './demos.css';
 
-interface Movie {
+export interface Movie {
   title: string;
   year: number;
   rating: number;

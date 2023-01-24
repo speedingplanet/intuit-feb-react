@@ -5,6 +5,7 @@ import CounterState from './CounterState';
 import FetchingData from './FetchingData';
 import FetchingDataAsync from './FetchingDataAsync';
 import FetchingDataAsyncWithRefresh from './FetchingDataAsyncWithRefresh';
+import FetchingDataClass from './FetchingDataClass';
 import MovieTable from './MovieTable';
 import SortableMovieTable from './SortableMovieTable';
 
@@ -72,6 +73,14 @@ routes.set(
     element: <FetchingDataAsync />,
   },
   'Fetching Data with async/await'
+);
+
+routes.set(
+  {
+    path: 'fetching-data-class',
+    element: <FetchingDataClass />,
+  },
+  'Fetching Data using a class-based component'
 );
 
 routes.set(
