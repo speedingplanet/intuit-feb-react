@@ -1,5 +1,5 @@
 import React from 'react';
-import { Movie, SortableMovieTable } from './SortableMovieTable';
+import { Movie, SortableMovieTable } from './SortableMovieTableClass';
 
 export default class FetchingDataClass extends React.Component<unknown, { movies: Movie[] }> {
   constructor(props: unknown) {
@@ -18,7 +18,7 @@ export default class FetchingDataClass extends React.Component<unknown, { movies
           throw new Error('Bad fetch response: ' + response.status);
         }
       })
-      .then((movies) => this.setState({ movies: movies }))
+      .then((movies) => this.setState({ movies }))
       .catch((error) => console.error('Could not fetch movies:', error));
   }
 
