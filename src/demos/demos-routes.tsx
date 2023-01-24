@@ -4,6 +4,7 @@ import ComponentCommunication from './ComponentCommunication';
 import CounterState from './CounterState';
 import FetchingData from './FetchingData';
 import FetchingDataAsync from './FetchingDataAsync';
+import FetchingDataAsyncWithRefresh from './FetchingDataAsyncWithRefresh';
 import MovieTable from './MovieTable';
 import SortableMovieTable from './SortableMovieTable';
 
@@ -71,6 +72,14 @@ routes.set(
     element: <FetchingDataAsync />,
   },
   'Fetching Data with async/await'
+);
+
+routes.set(
+  {
+    path: 'use-effect-watcher',
+    element: <FetchingDataAsyncWithRefresh />,
+  },
+  'useEffect with variables to watch'
 );
 
 export { routes };
