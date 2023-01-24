@@ -3,6 +3,7 @@ import ClassVsFunctionalContainer from './class-vs-functional/ClassVsFunctionalC
 import ComponentCommunication from './ComponentCommunication';
 import CounterState from './CounterState';
 import FetchingData from './FetchingData';
+import FetchingDataAsync from './FetchingDataAsync';
 import MovieTable from './MovieTable';
 import SortableMovieTable from './SortableMovieTable';
 
@@ -62,6 +63,14 @@ routes.set(
     element: <FetchingData />,
   },
   'Fetching Data'
+);
+
+routes.set(
+  {
+    path: 'fetching-data-async',
+    element: <FetchingDataAsync />,
+  },
+  'Fetching Data with async/await'
 );
 
 export { routes };
