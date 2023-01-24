@@ -13,8 +13,13 @@ let movie = {
 };
 
 test('renders a movie title (getByText exact)', () => {
+  // Render your component
   render(<MovieRow movie={movie} />);
+
+  // Look for parts of your component that reflect the rendering state/props
   let titleDiv = screen.getByText(movie.title);
+
+  // Write expect(s) to test
   expect(titleDiv).toBeInTheDocument();
 });
 

@@ -11,9 +11,11 @@ test('renders one particular movie', () => {
 
 test('toggle sort indicator ascending', async () => {
   render(<SortableMovieTable movies={movies} />);
+
+  // Create a regular expression instance, which we can re-use
   let ascIndicator = new RegExp('🔼');
-  let title = screen.getByText(/title/i);
   let indicator = screen.queryByText(ascIndicator);
+  let title = screen.getByText(/title/i);
 
   expect(title).toBeInTheDocument();
   expect(indicator).not.toBeInTheDocument();
