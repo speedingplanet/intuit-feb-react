@@ -18,8 +18,6 @@ test('renders one particular movie', () => {
 test('sorts on a click (with the DOM)', async () => {
   const { container } = render(<SortableMovieTable movies={movies} />);
   let title = screen.getByText(/title/i);
-
-  expect(title).toBeInTheDocument();
   fireEvent.click(title);
 
   // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
@@ -33,8 +31,6 @@ test('sorts on a click (with the DOM)', async () => {
 test('sorts on a click (with test ids)', async () => {
   render(<SortableMovieTable movies={movies} />);
   let title = screen.getByText(/title/i);
-
-  expect(title).toBeInTheDocument();
   fireEvent.click(title);
 
   // let titles = screen.getAllByTestId('movie-title-', { exact: false });
