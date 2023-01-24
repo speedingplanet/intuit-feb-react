@@ -1,4 +1,4 @@
-import React, { useState, MouseEventHandler } from 'react';
+import React, { useState } from 'react';
 import { orderBy, startCase } from 'lodash';
 import { movies } from '../data/movies';
 import './demos.css';
@@ -19,7 +19,11 @@ type SortConfig = {
   sortDirection: SortDirection;
 };
 
-export default function SortableMovieTable() {
+interface SortableMovieTableProps {
+  movies: Movie[];
+}
+
+export function SortableMovieTable({ movies }: SortableMovieTableProps) {
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     sortColumn: undefined,
     sortDirection: 'asc',
@@ -94,4 +98,8 @@ function MovieRow({ movie }: MovieRowProps) {
       <div className="movie-row">{movie.director}</div>
     </>
   );
+}
+
+export default function StandaloneSortableMovieTable() {
+  return <SortableMovieTable movies={movies} />;
 }

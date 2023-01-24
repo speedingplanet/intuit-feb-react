@@ -12,7 +12,11 @@ interface Movie {
   id: number;
 }
 
-export default function MovieTable() {
+interface MovieTableProps {
+  movies: Movie[];
+}
+
+export function MovieTable({ movies }: MovieTableProps) {
   return (
     <div className="movie-container">
       <div className="movie-headers">Title</div>
@@ -39,4 +43,8 @@ export function MovieRow({ movie }: MovieRowProps) {
       <div className="movie-row">{movie.director}</div>
     </>
   );
+}
+
+export default function StandaloneMovieTable() {
+  return <MovieTable movies={movies} />;
 }

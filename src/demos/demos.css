@@ -32,5 +32,6 @@
 
 .movie-headers,
 .movie-row {
+  /* padding: top right bottom left */
   padding: 0 1em 0 0.2em;
 }

@@ -72,12 +72,10 @@ function GridContainer({ columns, people }: GridContainerProps) {
     });
   };
 
-  let sortedPeople = orderBy(people, sortConfig.sortColumn, sortConfig.sortDirection);
-
   return (
     <div className="grid-container">
       <GridHeaderRow columns={columns} sortConfig={sortConfig} selectSortField={handleSortField} />
-      <GridBody people={sortedPeople} columns={columns} />
+      <GridBody people={people} sortConfig={sortConfig} columns={columns} />
     </div>
   );
 }
@@ -85,13 +83,16 @@ function GridContainer({ columns, people }: GridContainerProps) {
 interface GridBodyProps {
   people: Person[];
   columns: GridColumnConfig[];
+  sortConfig: SortConfig;
 }
 
-function GridBody({ people, columns }: GridBodyProps) {
+function GridBody({ people, columns, sortConfig }: GridBodyProps) {
+  let displayPeople = orderBy(people, sortConfig.sortColumn, sortConfig.sortDirection);
+
   return (
     <div className="grid-body">
       {/* Looping over each person */}
-      {people.map((person) => (
+      {displayPeople.map((person) => (
         <div className="grid grid-body-row" key={person.id}>
           {/* For this person, print out the values of the fields in the `fields` array */}
           {columns.map((column) => (
