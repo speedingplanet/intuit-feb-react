@@ -5,8 +5,9 @@ export default function FetchingData() {
   const [movies, setMovies] = useState([]);
 
   // Fetches movies only once, at component load time
+  // useEffect(what to do, [what to watch for changes])
   useEffect(() => {
-    fetch('http://localhost:8000/movies')
+    fetch('http://localhost:8000/movies?_delay=3000')
       .then((response) => {
         if (response.ok) {
           return response.json();
