@@ -80,3 +80,14 @@ Using these types implies some changes in your code:
   - In the event handler for handling the selected sort field, update the SortConfig
   - OUTSIDE the event handler, but BEFORE the return statement, use orderBy to sort the people array with the information in SortConfig.
   - Pass the sorted array into GridBody to re-render
+
+## Lab 8: Async data
+
+Refactor the code from the last lab to fetch data asynchronously.
+
+- Remove the import from '../data/people'
+- Make sure that you have the REST server running `npm run rest-server`
+- Figure out which component should fetch the data from the REST server
+  - You will need to use both `useState` and `useEffect` to fetch the data
+  - Don't forget the second argument on `useEffect` so you're not in an endless fetching loop!
+- Use either Promises or async/await, according to your preferences
