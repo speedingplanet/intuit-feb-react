@@ -9,12 +9,12 @@ test('renders one particular movie', () => {
   expect(firstMovie).toBeInTheDocument();
 });
 
-test('sorts on a click', () => {
+test('sorts on a click', async () => {
   render(<SortableMovieTable movies={movies} />);
   let title = screen.getByText(/title/i);
-  expect(title).not.toHaveClass('sort-asc');
-  /*
-  fireEvent.click(title, {});
-  expect(title).toHaveClass('sort-asc');
-  */
+
+  expect(title).toBeInTheDocument();
+  fireEvent.click(title);
+
+  // Now what? Try SortIndicatorMovieTable.tsx, or other solutions!
 });

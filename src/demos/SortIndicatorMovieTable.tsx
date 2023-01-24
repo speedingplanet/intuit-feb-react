@@ -45,12 +45,40 @@ export function SortableMovieTable({ movies }: SortableMovieTableProps) {
 
   let displayMovies = orderBy(movies, sortConfig.sortColumn, sortConfig.sortDirection);
 
+  let getSortIndicator = (field: string) => {
+    if (sortConfig.sortColumn === field) {
+      if (sortConfig.sortDirection === 'asc') {
+        return ' 🔼';
+      } else if (sortConfig.sortDirection === 'desc') {
+        return ' 🔽';
+      } else {
+        return '';
+      }
+    }
+  };
+
   return (
     <div className="movie-container">
-      <MovieHeader field="title" clickHeader={handleClickHeader} sortConfig={sortConfig} />
-      <MovieHeader field="year" clickHeader={handleClickHeader} sortConfig={sortConfig} />
-      <MovieHeader field="rating" clickHeader={handleClickHeader} sortConfig={sortConfig} />
-      <MovieHeader field="director" clickHeader={handleClickHeader} sortConfig={sortConfig} />
+      <MovieHeader
+        field="title"
+        clickHeader={handleClickHeader}
+        sortIndicator={getSortIndicator('title')}
+      />
+      <MovieHeader
+        field="year"
+        clickHeader={handleClickHeader}
+        sortIndicator={getSortIndicator('year')}
+      />
+      <MovieHeader
+        field="rating"
+        clickHeader={handleClickHeader}
+        sortIndicator={getSortIndicator('rating')}
+      />
+      <MovieHeader
+        field="director"
+        clickHeader={handleClickHeader}
+        sortIndicator={getSortIndicator('director')}
+      />
       {displayMovies.map((movie) => (
         <MovieRow key={movie.id} movie={movie} />
       ))}
@@ -66,22 +94,17 @@ export function SortableMovieTable({ movies }: SortableMovieTableProps) {
 interface MovieHeaderProps {
   field: string;
   label?: string;
-  sortConfig: SortConfig;
+  sortIndicator?: string;
   clickHeader: (field: string) => void;
 }
 
-function MovieHeader({ field, label, clickHeader, sortConfig }: MovieHeaderProps) {
+function MovieHeader({ field, label, clickHeader, sortIndicator }: MovieHeaderProps) {
   let classes = 'movie-headers clickable ';
-  if (sortConfig.sortColumn === field) {
-    if (sortConfig.sortDirection === 'asc') {
-      classes += 'sort-asc';
-    } else if (sortConfig.sortDirection === 'desc') {
-      classes += 'sort-desc';
-    }
-  }
   return (
     <div className={classes} onClick={() => clickHeader(field)}>
-      <span>{label || startCase(field)}</span>
+      <span>
+        {label || startCase(field)}&nbsp;{sortIndicator || ''}
+      </span>
     </div>
   );
 }
