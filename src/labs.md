@@ -91,3 +91,19 @@ Refactor the code from the last lab to fetch data asynchronously.
   - You will need to use both `useState` and `useEffect` to fetch the data
   - Don't forget the second argument on `useEffect` so you're not in an endless fetching loop!
 - Use either Promises or async/await, according to your preferences
+
+## Lab 9: Testing
+
+Let's test our Grid component
+
+- Test the component **without** async functionality. That is, do not test the component that has the `useEffect` call. Test the component that it passes data to.
+  - This may mean refactoring the `useEffect` call out of the `GridContainer`, for example
+- For the following tests, modify your components as needed. Add test IDs or other information if you think it will help.
+- Test the following cases:
+  - Did all of the rows render? If there are X number of people, did X rows render?
+  - Did the right number of columns render?
+  - How can you tell if the right sortIndicator is showing when you are sorting a field by **descending** values
+- Don't hesitate to adjust your code to make it easier to test.
+- Definitely look at the testing library docs:
+  - Testing Library overview: https://testing-library.com/docs/
+  - React Testing Library: https://testing-library.com/docs/react-testing-library/intro

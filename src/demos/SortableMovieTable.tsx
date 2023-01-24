@@ -30,7 +30,6 @@ export function SortableMovieTable({ movies }: SortableMovieTableProps) {
   });
 
   const handleClickHeader = (field: string) => {
-    console.log('Ran handleClickHeader');
     let nextSortState: SortConfig = {
       sortColumn: field,
       sortDirection: 'asc',
@@ -93,10 +92,18 @@ interface MovieRowProps {
 function MovieRow({ movie }: MovieRowProps) {
   return (
     <>
-      <div className="movie-row">{movie.title}</div>
-      <div className="movie-row">{movie.year}</div>
-      <div className="movie-row">{movie.rating}</div>
-      <div className="movie-row">{movie.director}</div>
+      <div data-testid={`movie-title-${movie.id}`} className="movie-row">
+        {movie.title}
+      </div>
+      <div data-testid={`movie-year-${movie.id}`} className="movie-row">
+        {movie.year}
+      </div>
+      <div data-testid={`movie-rating-${movie.id}`} className="movie-row">
+        {movie.rating}
+      </div>
+      <div data-testid={`movie-director-${movie.id}`} className="movie-row">
+        {movie.director}
+      </div>
     </>
   );
 }

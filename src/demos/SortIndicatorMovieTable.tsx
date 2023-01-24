@@ -30,7 +30,6 @@ export function SortableMovieTable({ movies }: SortableMovieTableProps) {
   });
 
   const handleClickHeader = (field: string) => {
-    console.log('Ran handleClickHeader');
     let nextSortState: SortConfig = {
       sortColumn: field,
       sortDirection: 'asc',
