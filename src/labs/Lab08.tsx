@@ -41,7 +41,7 @@ type SortConfig = {
 
 type SelectSortHandler = (sortColumn: PersonFields) => void;
 
-type GridColumnConfig = {
+export type GridColumnConfig = {
   field: PersonFields;
   label: string;
 };
@@ -51,7 +51,7 @@ interface GridContainerProps {
   people: Person[];
 }
 
-function GridContainer({ columns, people }: GridContainerProps) {
+export function GridContainer({ columns, people }: GridContainerProps) {
   let [sortConfig, setSortConfig] = useState<SortConfig>({
     sortColumn: undefined,
     sortDirection: undefined,
@@ -92,7 +92,7 @@ function GridBody({ people, columns }: GridBodyProps) {
     <div className="grid-body">
       {/* Looping over each person */}
       {people.map((person) => (
-        <div className="grid grid-body-row" key={person.id}>
+        <div data-testid={`person-row-${person.id}`} className="grid grid-body-row" key={person.id}>
           {/* For this person, print out the values of the fields in the `fields` array */}
           {columns.map((column) => (
             <div className="grid-body-cell" key={column.field}>
