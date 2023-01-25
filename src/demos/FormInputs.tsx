@@ -83,12 +83,7 @@ export function BootstrapInput(props: BootstrapInputProps) {
       <label htmlFor={rest.id} className={`form-label ${labelClass}`}>
         {labelText || 'Input'}
       </label>
-      <input
-        type={rest.type ?? 'text'}
-        className={`form-control ${rest.className}`}
-        id={rest.id}
-        {...rest}
-      />
+      <input {...rest} type={rest.type ?? 'text'} className={`form-control ${rest.className}`} />
     </div>
   );
 }
