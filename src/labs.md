@@ -107,3 +107,16 @@ Let's test our Grid component
 - Definitely look at the testing library docs:
   - Testing Library overview: https://testing-library.com/docs/
   - React Testing Library: https://testing-library.com/docs/react-testing-library/intro
+
+## Lab 10: Filtering
+
+Write a component that will accept form input and use it to filter the GridComponent table data.
+
+- There's a placeholder h4 element for where the filtering form should go.
+- Filter **only** on the lastName field. Let's not make our lives difficult.
+- Use Bootstrap styling if you'd like, but it's not required.
+- Initially, the form should have a text field and a button
+  - Clicking on the button should activate the filter
+  - You will probably have to pass the form data out from your component up to the Lab10 component, since that's where the data actually live
+- As a challenge, instead of having to click on the button to activate the filter, filter as-you-type. Anytime the user types in the form field, filter the data
+  - This is more complex than at first glance. What do you do if the user deletes values? How do you get the whole data set back?
