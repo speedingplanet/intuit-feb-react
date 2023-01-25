@@ -1,25 +1,68 @@
-import React, { useState } from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import { orderBy } from 'lodash';
 import './data-grid.css';
 import { people } from '../data/people';
 
 export default function Lab10() {
+  let [lastNameSearchText, setLastNameSearchText] = useState('');
   let columns: GridColumnConfig[] = [
     { field: 'firstName', label: 'First Name' },
     { field: 'lastName', label: 'Last Name' },
     { field: 'city', label: 'City' },
     { field: 'province', label: 'State' },
   ];
+
+  let handleSearchLastNames = (lastName: string) => {
+    console.log(`You're searching on ${lastName}.`);
+    setLastNameSearchText(lastName);
+  };
   return (
     <section>
       <h3>Lab 10: Filtering data</h3>
       <div className="row">
         <div className="col">
-          <h4>The filtering form should go here</h4>
+          <FilterForm searchLastNames={handleSearchLastNames} />
         </div>
       </div>
-      <GridContainer columns={columns} people={people} />
+      <GridContainer columns={columns} people={people} lastNameSearchText={lastNameSearchText} />
     </section>
+  );
+}
+
+interface FilterFormProps {
+  searchLastNames: (lastName: string) => void;
+}
+
+function FilterForm({ searchLastNames }: FilterFormProps) {
+  let [filterText, setFilterText] = useState('');
+
+  let handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    searchLastNames(event.currentTarget.value);
+    setFilterText(event.currentTarget.value);
+    // searchLastNames(filterText);
+  };
+
+  return (
+    <>
+      <div>
+        <label className="form-label" htmlFor="lastname-filter">
+          Filter by last name:{' '}
+        </label>
+        <input
+          value={filterText}
+          onChange={handleChange}
+          className="form-control"
+          type="text"
+          name="lastName"
+          id="lastname-filter"
+        />
+      </div>
+      <div className="mt-2 mb-2">
+        <button className="btn btn-warning" onClick={() => searchLastNames(filterText)}>
+          Search
+        </button>
+      </div>
+    </>
   );
 }
 
@@ -54,9 +97,11 @@ export type GridColumnConfig = {
 interface GridContainerProps {
   columns: GridColumnConfig[];
   people: Person[];
+  lastNameSearchText?: string;
 }
 
-export function GridContainer({ columns, people }: GridContainerProps) {
+export function GridContainer({ columns, people, lastNameSearchText }: GridContainerProps) {
+  console.log(`GridContainer: I should search on ${lastNameSearchText}`);
   let [sortConfig, setSortConfig] = useState<SortConfig>({
     sortColumn: undefined,
     sortDirection: undefined,
@@ -77,7 +122,13 @@ export function GridContainer({ columns, people }: GridContainerProps) {
     });
   };
 
-  let sortedPeople = orderBy(people, sortConfig.sortColumn, sortConfig.sortDirection);
+  let filteredPeople = [...people];
+
+  if (lastNameSearchText !== undefined) {
+    let lastNameRegExp = new RegExp(lastNameSearchText, 'i');
+    filteredPeople = people.filter((person) => lastNameRegExp.test(person.lastName));
+  }
+  let sortedPeople = orderBy(filteredPeople, sortConfig.sortColumn, sortConfig.sortDirection);
 
   return (
     <div className="grid-container">
