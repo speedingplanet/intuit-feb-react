@@ -7,6 +7,7 @@ import FetchingDataAsync from './FetchingDataAsync';
 import FetchingDataAsyncWithRefresh from './FetchingDataAsyncWithRefresh';
 import FetchingDataClass from './FetchingDataClass';
 import FormInputs from './FormInputs';
+import FormWithReducer from './FormWithReducer';
 import MinimalInput from './MinimalInput';
 import MovieTable from './MovieTable';
 import SortableMovieTable from './SortableMovieTable';
@@ -107,6 +108,14 @@ routes.set(
     element: <MinimalInput />,
   },
   'Minimal input example'
+);
+
+routes.set(
+  {
+    path: 'form-with-reducer',
+    element: <FormWithReducer />,
+  },
+  'Form with reducer '
 );
 
 export { routes };
