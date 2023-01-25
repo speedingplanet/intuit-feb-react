@@ -6,6 +6,7 @@ import FetchingData from './FetchingData';
 import FetchingDataAsync from './FetchingDataAsync';
 import FetchingDataAsyncWithRefresh from './FetchingDataAsyncWithRefresh';
 import FetchingDataClass from './FetchingDataClass';
+import FormInputs from './FormInputs';
 import MovieTable from './MovieTable';
 import SortableMovieTable from './SortableMovieTable';
 
@@ -89,6 +90,14 @@ routes.set(
     element: <FetchingDataAsyncWithRefresh />,
   },
   'useEffect with variables to watch'
+);
+
+routes.set(
+  {
+    path: 'form-fields',
+    element: <FormInputs />,
+  },
+  'Form fields with state'
 );
 
 export { routes };
