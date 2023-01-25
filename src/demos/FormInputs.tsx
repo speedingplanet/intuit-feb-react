@@ -34,7 +34,9 @@ export default function FormInputs() {
       </div>
       <div className="row p-3 border-top">
         <div className="col">
-          <label htmlFor="ex-select">Select List</label>
+          <label htmlFor="ex-select" className="form-label">
+            Select List
+          </label>
           <select
             className="form-select"
             id="ex-select"
