@@ -138,7 +138,10 @@ interface GridHeaderProps {
 
 function GridHeader({ column, selectSortField, sortIndicator }: GridHeaderProps) {
   return (
-    <div className="grid-header clickable" onClick={() => selectSortField(column.field)}>
+    <div
+      className="grid-header clickable"
+      data-testid={`person-header-${column.field}`}
+      onClick={() => selectSortField(column.field)}>
       {column.label}
       {sortIndicator}
     </div>
