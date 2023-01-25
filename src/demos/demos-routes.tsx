@@ -7,6 +7,7 @@ import FetchingDataAsync from './FetchingDataAsync';
 import FetchingDataAsyncWithRefresh from './FetchingDataAsyncWithRefresh';
 import FetchingDataClass from './FetchingDataClass';
 import FormInputs from './FormInputs';
+import MinimalInput from './MinimalInput';
 import MovieTable from './MovieTable';
 import SortableMovieTable from './SortableMovieTable';
 
@@ -98,6 +99,14 @@ routes.set(
     element: <FormInputs />,
   },
   'Form fields with state'
+);
+
+routes.set(
+  {
+    path: 'minimal-input',
+    element: <MinimalInput />,
+  },
+  'Minimal input example'
 );
 
 export { routes };
