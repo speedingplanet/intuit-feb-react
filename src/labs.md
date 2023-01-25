@@ -110,6 +110,8 @@ Let's test our Grid component
 
 ## Lab 10: Filtering
 
+### Part 1
+
 Write a component that will accept form input and use it to filter the GridComponent table data.
 
 - There's a placeholder h4 element for where the filtering form should go.
@@ -118,5 +120,25 @@ Write a component that will accept form input and use it to filter the GridCompo
 - Initially, the form should have a text field and a button
   - Clicking on the button should activate the filter
   - You will probably have to pass the form data out from your component up to the Lab10 component, since that's where the data actually live
+  - Arrays in JavaScript have a filter function
+
+```javascript
+let filteredArray = originalArray.filter((value, index, array) => boolean);
+
+// Search with includes
+let needle = 'and';
+let haystack = 'The sun and moon and stars';
+haystack.includes(needle); // Returns true
+
+// Search with RegExp
+let lastName = 'Paxton';
+let searchRegExp = /x/; // or new RegExp('x');
+searchRegExp.test(lastName); // Returns true
+```
+
+- How do we reset the filter? Should there be a custom button for that?
+
+### Part 2
+
 - As a challenge, instead of having to click on the button to activate the filter, filter as-you-type. Anytime the user types in the form field, filter the data
   - This is more complex than at first glance. What do you do if the user deletes values? How do you get the whole data set back?
