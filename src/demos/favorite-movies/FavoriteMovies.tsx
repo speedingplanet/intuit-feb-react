@@ -1,5 +1,7 @@
 import React from 'react';
-import AddMovie from './AddMovie';
+import { Provider } from 'react-redux';
+import { store } from './favorite-movies-redux';
+import ReduxAddMovie from './ReduxAddMovie';
 
 export interface Movie {
   title: string;
@@ -8,9 +10,9 @@ export interface Movie {
 }
 
 export default function FavoriteMovies() {
-  const handleSaveMovie = (movie: Movie) => {
-    return 1;
-  };
-
-  return <AddMovie saveMovie={handleSaveMovie} />;
+  return (
+    <Provider store={store}>
+      <ReduxAddMovie />
+    </Provider>
+  );
 }

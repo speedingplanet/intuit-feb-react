@@ -1,5 +1,6 @@
-import { AnyAction, createStore } from '@reduxjs/toolkit';
+import { AnyAction, createStore, applyMiddleware } from '@reduxjs/toolkit';
 import { Movie } from './FavoriteMovies';
+import logger from 'redux-logger';
 
 interface FavoriteMoviesState {
   movies: Movie[];
@@ -28,6 +29,9 @@ let reducer = (state = initialState, action: AnyAction) => {
   }
 };
 
-let store = createStore<FavoriteMoviesState, AnyAction, unknown, unknown>(reducer, initialState);
+let store = createStore<FavoriteMoviesState, AnyAction, unknown, unknown>(
+  reducer,
+  applyMiddleware(logger)
+);
 
 export { store };

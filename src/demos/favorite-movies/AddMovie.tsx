@@ -5,7 +5,7 @@ interface AddMovieProps {
   saveMovie: (movie: Movie) => void;
 }
 
-let formState: { [key: string]: string | number } = {};
+let formState: { [key: string]: string } = {};
 
 export default function AddMovie({ saveMovie }: AddMovieProps) {
   const handleSubmit: FormEventHandler = (event) => {
@@ -16,8 +16,8 @@ export default function AddMovie({ saveMovie }: AddMovieProps) {
       rating: 0,
     };
 
-    for (let key of Object.keys(tempMovie)) {
-      //@ts-expect-error TODO: Look up Object.keys and TypeScript
+    for (let key of Object.keys(formState) as Array<keyof Movie>) {
+      //@ts-expect-error TODO: Why does TypeScript hate us?
       tempMovie[key] = formState[key];
     }
 
@@ -57,10 +57,10 @@ export default function AddMovie({ saveMovie }: AddMovieProps) {
   );
 }
 
-type FieldChangeHandler = (field: string, value: string) => void;
+type FieldChangeHandler = (field: keyof Movie, value: string) => void;
 
 interface FormFieldProps {
-  name: string;
+  name: keyof Movie;
   id: string;
   labelText: string;
   fieldChange: FieldChangeHandler;
