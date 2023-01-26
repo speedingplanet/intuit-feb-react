@@ -18,6 +18,14 @@ let actions = {
   rateMovie: 'movies/RATE_MOVIE',
 };
 
+// Action creator
+let addMovie = (movie: Movie) => {
+  return {
+    type: actions.addMovie,
+    payload: movie,
+  };
+};
+
 let reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case actions.addMovie:
@@ -34,4 +42,4 @@ let store = createStore<FavoriteMoviesState, AnyAction, unknown, unknown>(
   applyMiddleware(logger)
 );
 
-export { store };
+export { store, actions, addMovie };
