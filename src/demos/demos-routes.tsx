@@ -10,6 +10,10 @@ import FormInputs from './FormInputs';
 import FormWithReducer from './FormWithReducer';
 import MinimalInput from './MinimalInput';
 import MovieTable from './MovieTable';
+import ReduxContainer from './redux-counter/ReduxCounter';
+import BetterReduxContainer from './redux-counter-best/ReduxContainer';
+import ReduxToolkitContainer from './redux-counter-tk/ReduxContainer';
+import BetterReduxToolkitContainer from './redux-counter-tk-best/ReduxContainer';
 import SortableMovieTable from './SortableMovieTable';
 
 let routes = new Map<RouteObject, string>();
@@ -115,7 +119,39 @@ routes.set(
     path: 'form-with-reducer',
     element: <FormWithReducer />,
   },
-  'Form with reducer '
+  'Form with reducer'
+);
+
+routes.set(
+  {
+    path: 'redux-counter',
+    element: <ReduxContainer />,
+  },
+  'Redux Counter (old-style)'
+);
+
+routes.set(
+  {
+    path: 'better-redux-counter',
+    element: <BetterReduxContainer />,
+  },
+  'Better Redux Counter (old-style)'
+);
+
+routes.set(
+  {
+    path: 'redux-toolkit-counter',
+    element: <ReduxToolkitContainer />,
+  },
+  'Redux Counter (toolkit)'
+);
+
+routes.set(
+  {
+    path: 'better-redux-toolkit-counter',
+    element: <BetterReduxToolkitContainer />,
+  },
+  'Better Redux Counter (toolkit)'
 );
 
 export { routes };
