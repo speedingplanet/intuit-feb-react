@@ -1,27 +1,55 @@
-import React, { ChangeEventHandler, Reducer, useReducer } from 'react';
+import React, { ChangeEventHandler, FormEventHandler, Reducer, useReducer } from 'react';
 import { BootstrapInput } from './FormInputs';
 import { Movie } from './SortableMovieTable';
 
 type MovieInput = Partial<Movie>;
-type MovieKeys = keyof Movie;
-
-type MovieAction = {
-  [K in MovieKeys | 'type']: string | string[];
-};
+interface MovieAction extends MovieInput {
+  type: string;
+}
 
 let movieStateReducer: Reducer<MovieInput, MovieAction> = (state, action) => {
-  return state;
+  switch (action.type) {
+    case 'update_title':
+      return { ...state, title: action.title };
+    case 'update_year':
+      return { ...state, year: action.year };
+    case 'update_rating':
+      return { ...state, rating: action.rating };
+    case 'update_director':
+      return { ...state, director: action.director };
+    case 'update_writer':
+      return { ...state, writer: action.writer };
+  }
+  throw Error('unknown action type');
+};
+
+let initialState: MovieInput = {
+  title: '',
+  year: 1900,
+  rating: 0,
+  director: '',
+  writer: [''],
 };
 
 export default function FormWithReducer() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let [state, dispatch] = useReducer<typeof movieStateReducer>(movieStateReducer, {});
-  let handleStateUpdate: ChangeEventHandler<HTMLInputElement> = () => {
-    return true;
+  let [state, dispatch] = useReducer<typeof movieStateReducer>(movieStateReducer, initialState);
+
+  let handleStateUpdate: ChangeEventHandler<HTMLInputElement> = (event) => {
+    let field = event.currentTarget.name;
+    let value = event.currentTarget.value;
+    dispatch({
+      type: `update_${field}`,
+      [field]: value,
+    });
+  };
+
+  let handleSubmit: FormEventHandler = (event) => {
+    event.preventDefault();
+    console.log('Current form state:', state);
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <BootstrapInput
         containerClass="mt-2"
         labelText="Movie Title"
