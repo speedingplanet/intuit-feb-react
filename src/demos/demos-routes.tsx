@@ -157,7 +157,7 @@ routes.set(
 
 routes.set(
   {
-    path: 'favorite-movies',
+    path: 'favorite-movies/*',
     element: <FavoriteMovies />,
   },
   'Favorite Movies'
