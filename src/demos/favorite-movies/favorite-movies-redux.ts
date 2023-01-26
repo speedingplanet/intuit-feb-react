@@ -2,7 +2,7 @@ import { AnyAction, createStore, applyMiddleware } from '@reduxjs/toolkit';
 import { Movie } from './FavoriteMovies';
 import logger from 'redux-logger';
 
-interface FavoriteMoviesState {
+export interface FavoriteMoviesState {
   movies: Movie[];
 }
 
