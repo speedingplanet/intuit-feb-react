@@ -59,16 +59,25 @@ function Counter({ value, increment, decrement }) {
   );
 }
 
+// mapReduxStateToComponentDisplay
 const mapStateToProps = (state) => ({
+  // nameOfPropertyInComponent: state.nameOfPropertyInRedux
   value: state.counter,
 });
 
+// mapReduxDispatcherToComponentEvents
 const mapDispatchToProps = (dispatch) => ({
-  increment: () => dispatch(addOne()),
-  decrement: () => dispatch(subtractOne()),
+  // nameOfCustomEventOnComponent: dispatch an action to Redux
+  increment: () => dispatch({ type: 'increment' }),
+  decrement: () => dispatch({ type: 'decrement' }),
 });
 
 const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+/*
+const reduxConnector = connect(mapStateToProps, mapDispatchToProps);
+const ConnectedComponent = reduxConnector(Counter);
+*/
 
 export default function ReduxContainer() {
   return (
