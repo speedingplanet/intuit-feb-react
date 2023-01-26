@@ -15,6 +15,7 @@ import BetterReduxContainer from './redux-counter-best/ReduxContainer';
 import ReduxToolkitContainer from './redux-counter-tk/ReduxContainer';
 import BetterReduxToolkitContainer from './redux-counter-tk-best/ReduxContainer';
 import SortableMovieTable from './SortableMovieTable';
+import FavoriteMovies from './favorite-movies/FavoriteMovies';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -152,6 +153,14 @@ routes.set(
     element: <BetterReduxToolkitContainer />,
   },
   'Better Redux Counter (toolkit)'
+);
+
+routes.set(
+  {
+    path: 'favorite-movies',
+    element: <FavoriteMovies />,
+  },
+  'Favorite Movies'
 );
 
 export { routes };
