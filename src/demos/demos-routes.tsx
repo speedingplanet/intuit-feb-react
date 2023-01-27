@@ -16,6 +16,7 @@ import ReduxToolkitContainer from './redux-counter-tk/ReduxContainer';
 import BetterReduxToolkitContainer from './redux-counter-tk-best/ReduxContainer';
 import SortableMovieTable from './SortableMovieTable';
 import FavoriteMovies from './favorite-movies/FavoriteMovies';
+import ToggleVisibility from './ToggleVisibility';
 
 let routes = new Map<RouteObject, string>();
 routes.set(
@@ -49,6 +50,14 @@ routes.set(
     element: <ClassVsFunctionalContainer />,
   },
   'Class vs Functional components'
+);
+
+routes.set(
+  {
+    path: 'toggle-visibility',
+    element: <ToggleVisibility />,
+  },
+  'Toggle Visibility'
 );
 
 routes.set(
